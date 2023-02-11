@@ -7,7 +7,7 @@ settings:
   write_history: true
 directories:
   output: 
-  datasets_source: data-raw
+  datasets_source: data_raw
 datasets:
   - Sa767-03
 tasks:
