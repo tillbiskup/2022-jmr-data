@@ -1,0 +1,222 @@
+format:
+  type: ASpecD recipe
+  version: '0.2'
+settings:
+  default_package: cwepr
+  autosave_plots: true
+directories:
+  datasets_source: data_raw/
+datasets:    
+  - source: complex1
+    id: compound1
+    label: Complex 1
+    
+  - source: complex2
+    id: compound2
+    label: Complex 2
+    
+  - source: complex3
+    id: compound3
+    label: Complex 3
+    
+  - source: tube2
+    id: background
+    label: 'Background'
+ 
+tasks:  
+- kind: processing
+  type: FrequencyCorrection
+  properties:
+    parameters:
+      frequency: 9.84
+  comment: Frequency correction
+      
+- kind: processing
+  type: BaselineCorrection
+  properties: 
+    parameters:
+      order: 0
+      percentage: [10,10]
+  comment: Baseline correction
+
+- kind: multiplot
+  type: MultiPlotter1D
+  properties:
+    filename: baseline_freq_corr.png
+    properties:
+      figure: 
+        dpi: 600
+        title: Baseline and frequency corrected
+      axes: 
+        xlim: [250,400]
+        yticks: []
+        yticklabels: []
+        ylabel: '$Intensity$ / a.u.'
+      legend:
+        loc: 'lower left'
+    parameters:
+      show_legend: True
+      tight_layout: True
+      g-axis: True 
+  comment: Plot after baseline and frequency correction 
+  
+- kind: processing
+  type: Normalisation
+  properties: 
+    parameters:
+      kind: amplitude
+      range: [357, 375]  # in mT
+      range_unit: axis
+  apply_to: 
+  comment: Normalisation to range of background signal
+  
+- kind: multiplot
+  type: MultiPlotter1D
+  properties:
+    filename: range_norm.png
+    properties:
+      figure: 
+        dpi: 300
+        title: Normalised to background peak
+      axes: 
+        xlim: [250,400]
+        ylim: [-3, 1]   
+        yticks: []
+        yticklabels: []
+        ylabel: '$Intensity$ / a.u.'
+      legend:
+        loc: 'lower left'
+    parameters:
+      show_legend: True
+      tight_layout: True
+      g-axis: True 
+  comment: Plot after normalisation to background signal 
+  
+- kind: multiprocessing
+  type: CommonRangeExtraction
+  comment: Range extraction in preparation for subtracting background in DatasetAlgebra
+
+- kind: processing
+  type: DatasetAlgebra
+  properties:
+    parameters: 
+      kind: minus
+      dataset: background
+  apply_to:
+    - compound3
+    - compound1
+    - compound2
+  comment: Subtract background spectrum 
+    
+- kind: multiplot
+  type: MultiPlotter1D
+  properties:
+    filename: background_subtracted.png
+    properties:
+      figure: 
+        dpi: 300
+        title: Subtracted background 
+      axes: 
+        xlim: [250,400]
+        ylim: [-3, 1]
+        yticks: []
+        yticklabels: []
+        ylabel: '$Intensity$ / a.u.'
+      legend:
+        loc: 'lower left'
+    parameters:
+      show_legend: True
+      tight_layout: True
+      g-axis: True 
+  apply_to: 
+    - compound1
+    - compound2
+    - compound3
+  comment: Figrue of background subtracted spectra.
+  
+- kind: processing
+  type: Normalisation
+  properties: 
+    parameters:
+      kind: amplitude
+  comment: Normalisation on complete spectrum 
+
+- kind: singleplot
+  type: SinglePlotter1D
+  properties:
+    properties: 
+      figure: 
+        dpi: 300
+      axes: 
+        ylabel: '$Intensity$ / a.u.'
+      drawing:
+        color: dodgerblue  # all Matplotlib colors possible, also in Hex-Code 
+    caption: 
+      title: > 
+        Background corrected spectrum of complex 1.
+      text: > 
+        Resulting spectrum after the background correction.
+    parameters:
+      show_legend: True
+      tight: x
+      tight_layout: True
+      g-axis: True 
+  apply_to: 
+    - compound1
+  comment: Singleplotter for background spectrum with generic filename. 
+    
+- kind: multiplot
+  type: MultiPlotter1D
+  properties:
+    filename: final.png
+    properties:
+      figure: 
+        dpi: 300
+        title: Final figure
+      axes: 
+        xlim: [250,400]
+        yticks: []
+        yticklabels: []
+        ylabel: '$Intensity$ / a.u.'
+      legend:
+        loc: 'lower left'
+      caption:
+        title: > 
+           Background corrected spectra of all compounds.
+        text: > 
+          After background subtraction, all spectra were again normalised to the
+          full amplitude.
+    parameters:
+      show_legend: True
+      tight_layout: True
+      g-axis: True 
+  apply_to: 
+    - compound1
+    - compound2
+    - compound3
+  comment: Background corrected spectra, complete view
+
+- kind: export
+  type: TxtExporter
+  properties: 
+    target: 
+      - data/compound1.txt      
+  apply_to: 
+    - compound1
+  comment:  >
+    Data exported to a txt file with magnetic field values in the first and 
+    intensity values in the second column. The file is stored in the 
+    directory "data" which first has to be created. 
+    
+- kind: report
+  type: LaTeXReporter
+  properties:
+    template: dataset.tex
+    filename: 
+      - report_compound1.tex
+  compile: true 
+  apply_to: 
+    - compound1
+  comment: >
+    Aggregation of all steps on the background dataset to give it a readable 
+    form. 

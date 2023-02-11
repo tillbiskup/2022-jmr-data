@@ -1,0 +1,73 @@
+cwEPR Info file - v. 0.1.3 (2016-01-18)
+
+GENERAL
+Filename:               complex2
+Date start:             2021-07-27
+Date end:               2021-07-27
+Time start:             09:33:00
+Time end:               10:15:00
+Operator:               Jim Knopf
+Label:                  Complex 2
+Purpose:                signal at low temperature
+
+SAMPLE
+Name:                   Complex 2
+ID:                     8
+Description:            Complex in solvent, frozen
+Solvent:                buffer
+Preparation:            John Doe
+Tube:                   glass capillary sealed with clay
+
+EXPERIMENT
+Type:                   field seewp
+Runs:                   1
+Variable parameter:     Field
+Increment:              0.22
+
+SPECTROMETER
+Model:                  Bruker ELEXSYS
+Software:               Bruker XEPR
+
+MAGNETIC FIELD
+Field probe type:       Hall 
+Field probe model:      xxx 
+Start:                  240 mT
+Stop:                   420 mT
+Step:                   0.22 mT
+Sequence:               up
+Controller:             Bruker EMX
+Power supply:           Bruker ER083 (200/60)
+
+BRIDGE
+Model:                  Bruker EMX premiumX
+Controller:             Bruker EMX
+Attenuation:            20 dB
+Power:                  2.002 mW
+Detection:              diode
+Frequency counter:      Bruker
+MW frequency:           9.790356 GHz
+Q value:                N/A
+
+SIGNAL CHANNEL
+Model:                  Bruker ELEXSYS
+Modulation amplifier:   Bruker ELEXSYS
+Accumulations:          4
+Modulation frequency:   100 kHz
+Modulation amplitude:   0.4 mT
+Receiver gain:          49 dB
+Conversion time:        20.48 ms
+Time constant:          81.29 ms
+Phase:                  0 deg
+
+PROBEHEAD
+Type:                   dielectric
+Model:                  Bruker ER4118X-MD5
+Coupling:               critical
+
+TEMPERATURE
+Temperature:            80 K
+Controller:             Lake Shore 350
+Cryostat:               Cryogenic CF VTC
+Cryogen:                He
+
+COMMENT

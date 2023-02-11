@@ -1,0 +1,73 @@
+cwEPR Info file - v. 0.1.3 (2016-01-18)
+
+GENERAL
+Filename:               20190309-LiLiF
+Date start:             2019-03-09
+Date end:               2019-03-09
+Time start:             09:40:00
+Time end:               09:44:00
+Operator:               Biskup
+Label:                  LiLiF
+Purpose:                field calibration
+
+SAMPLE
+Name:                   LiLiF
+ID:                     N/A
+Description:            
+Solvent:                solid
+Preparation:            N/A
+Tube:                   1.6 x 1.0 x 120 mm
+
+EXPERIMENT
+Type:                   field-sweep
+Runs:                   1
+Variable parameter:     field
+Increment:              xx mT
+
+SPECTROMETER
+Model:                  Bruker Elexsys E580
+Software:               Xepr 2.6b.146
+
+MAGNETIC FIELD
+Field probe type:       Hall 
+Field probe model:      xxx 
+Start:                  1220.4 mT
+Stop:                   1222.4 mT
+Step:                   2/1023 mT
+Sequence:               up
+Controller:             Bruker 
+Power supply:           Bruker
+
+BRIDGE
+Model:                  Bruker Super-Q FTu-EPR
+Controller:             Bruker
+Attenuation:            25 dB
+Power:                  158.1 uW
+Detection:              diode
+Frequency counter:      Bruker
+MW frequency:           34.22622 GHz
+Q value:                N/A
+
+SIGNAL CHANNEL
+Model:                  Bruker EPR Signal Processing Unit
+Modulation amplifier:   Bruker
+Accumulations:          4
+Modulation frequency:   100 kHz
+Modulation amplitude:   0.01 mT
+Receiver gain:          60 dB
+Conversion time:        60 ms
+Time constant:          N/A
+Phase:                  0 deg
+
+PROBEHEAD
+Type:                   Q-HQ
+Model:                  Bruker ER 5106QT-W1
+Coupling:               critical
+
+TEMPERATURE
+Temperature:            295 K
+Controller:             N/A
+Cryostat:               N/A
+Cryogen:                N/A
+
+COMMENT

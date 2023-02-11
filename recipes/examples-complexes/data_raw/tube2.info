@@ -1,0 +1,73 @@
+cwEPR Info file - v. 0.1.3 (2016-01-18)
+
+GENERAL
+Filename:               tube2
+Date start:             2021-05-06
+Date end:               2021-05-06
+Time start:             13:55:00
+Time end:               15:20:00
+Operator:               Jim Knopf
+Label:                  empty tube
+Purpose:                80 K measurement
+
+SAMPLE
+Name:                   tube
+ID:                     -
+Description:            empty capillary, without clay
+Solvent:                -
+Preparation:            Jon Doe
+Tube:                   capillary
+
+EXPERIMENT
+Type:                   field seewp
+Runs:                   1
+Variable parameter:     Field
+Increment:              0.22
+
+SPECTROMETER
+Model:                  Bruker ELEXYS
+Software:               Bruker XEPR
+
+MAGNETIC FIELD
+Field probe type:       Hall 
+Field probe model:      xxx 
+Start:                  240 mT
+Stop:                   420 mT
+Step:                   0.22 mT
+Sequence:               up
+Controller:             Bruker EMX
+Power supply:           Bruker ER083 (200/60)
+
+BRIDGE
+Model:                  Bruker ELEXSYS mit Gunn-diode
+Controller:             Bruker 
+Attenuation:            30 dB
+Power:                  0.2002 mW
+Detection:              diode
+Frequency counter:      Bruker
+MW frequency:           9.784988 GHz
+Q value:                8900
+
+SIGNAL CHANNEL
+Model:                  Bruker ELEXSYS
+Modulation amplifier:   Bruker ELEXSYS
+Accumulations:          8
+Modulation frequency:   100 kHz
+Modulation amplitude:   0.4 mT
+Receiver gain:          60 dB
+Conversion time:        20.48 ms
+Time constant:          81.29 ms
+Phase:                  0 deg
+
+PROBEHEAD
+Type:                   dielectric
+Model:                  Bruker ER4118X-MD5
+Coupling:               critical
+
+TEMPERATURE
+Temperature:            80 K
+Controller:             Lake Shore 350
+Cryostat:               Cryogenic CF VTC
+Cryogen:                He
+
+COMMENT

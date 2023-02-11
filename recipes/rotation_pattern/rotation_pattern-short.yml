@@ -1,0 +1,21 @@
+format:
+  type: ASpecD recipe
+  version: '0.2'
+settings:
+  default_package: cwepr
+directories:
+  datasets_source: data_raw/
+datasets:      
+  - example1/RotationPattern-01
+tasks:  
+- kind: processing
+  type: BaselineCorrection
+- kind: singleplot
+  type: GoniometerSweepPlotter
+  properties:
+    properties:
+      figure: 
+        dpi: 300
+      axes:
+        xlim: [349, 353]
+    filename: output1.png

@@ -1,0 +1,98 @@
+format:
+  type: ASpecD recipe
+  version: '0.2'
+settings:
+  default_package: cwepr
+  autosave_plots: false
+datasets:
+- Sa732-01
+- Sa734-01
+- Sa736-01
+- Sa738-01
+tasks:
+- kind: processing
+  type: BaselineCorrection
+- kind: processing
+  type: FrequencyCorrection
+  properties:
+    parameters:
+      frequency: 9.48
+- kind: processing
+  type: Normalisation
+  properties:
+    parameters:
+      kind: amplitude
+- kind: multiplot
+  type: MultiPlotter1D
+  properties:
+    parameters:
+      show_legend: false
+      show_zero_lines: true
+      tight_layout: true
+      g-axis: false
+    properties:
+      axes:
+        xlim: [336, 340]
+        yticks: []
+  apply_to:
+  - Sa732-01
+  - Sa734-01
+  - Sa736-01
+  - Sa738-01
+  result: unfiltered
+- kind: processing
+  type: Filtering
+  properties:
+    parameters:
+      type: savgol
+      window_length: 501
+      order: 5
+  apply_to:
+  - Sa732-01
+  - Sa734-01
+  - Sa736-01
+  - Sa738-01
+  result:
+  - Sa732-01-filtered
+  - Sa734-01-filtered
+  - Sa736-01-filtered
+  - Sa738-01-filtered
+- kind: multiplot
+  type: MultiPlotter1D
+  properties:
+    parameters:
+      show_legend: false
+      show_zero_lines: true
+      tight_layout: true
+      g-axis: false
+    properties:
+      axes:
+        xlim: [336, 340]
+        yticks: []
+  apply_to:
+  - Sa732-01-filtered
+  - Sa734-01-filtered
+  - Sa736-01-filtered
+  - Sa738-01-filtered
+  result: filtered
+- kind: compositeplot
+  type: CompositePlotter
+  properties:
+    plotter:
+    - unfiltered
+    - filtered
+    parameters:
+      show_legend: false
+      show_zero_lines: true
+      tight_layout: false
+    properties:
+      figure:
+        size:
+        - 6.0
+        - 6.0
+        dpi: 100.0
+    filename: comparison-unfiltered-filtered.pdf
+    grid_dimensions: [2,1]
+    subplot_locations:
+    - [0, 0, 1, 1]
+    - [1, 0, 1, 1]

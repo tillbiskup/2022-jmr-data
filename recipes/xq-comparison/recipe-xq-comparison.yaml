@@ -1,0 +1,114 @@
+format:
+  type: ASpecD recipe
+  version: '0.2'
+settings:
+  default_package: cwepr
+datasets:
+- source: Sample-X
+  label: X-band
+- LiLiF-X
+- source: Sample-Q
+  label: Q-band
+- LiLiF-Q
+tasks:
+- kind: processing
+  type: BaselineCorrection
+- kind: processing
+  type: FrequencyCorrection
+  properties:
+    parameters:
+      frequency: 9.5
+  apply_to:
+  - Sample-X
+  - LiLiF-X
+  comment: Frequency correction for X band
+- kind: processing
+  type: FrequencyCorrection
+  properties:
+    parameters:
+      frequency: 34.0
+  apply_to:
+  - Sample-Q
+  - LiLiF-Q
+  comment: Frequency correction for Q band
+- kind: singleanalysis
+  type: FieldCalibration
+  properties:
+    parameters:
+      standard: LiLiF
+  apply_to:
+  - LiLiF-X
+  result: field-offset-X
+  comment: Field offset for X band
+- kind: singleanalysis
+  type: FieldCalibration
+  properties:
+    parameters:
+      standard: LiLiF
+  apply_to:
+  - LiLiF-Q
+  result: field-offset-Q
+  comment: Field offset for Q band
+- kind: processing
+  type: FieldCorrection
+  properties:
+    parameters:
+      offset: field-offset-X
+  apply_to:
+  - Sample-X
+  comment: Field correction for X band
+- kind: processing
+  type: FieldCorrection
+  properties:
+    parameters:
+      offset: field-offset-Q
+  apply_to:
+  - Sample-Q
+  - LiLiF-Q
+  comment: Field correction for Q band
+- kind: processing
+  type: GAxisCreation
+  apply_to:
+  - Sample-X
+  - Sample-Q
+  result:
+  - Sample-X-gaxis
+  - Sample-Q-gaxis
+  comment: Convert magnetic field axis to g axis
+- kind: processing
+  type: Normalisation
+  properties:
+    parameters:
+      kind: amplitude
+  apply_to:
+  - Sample-X-gaxis
+  - Sample-Q-gaxis
+  comment: Normalise to amplitude for easier comparison
+- kind: multiplot
+  type: MultiPlotter1DStacked
+  properties:
+    parameters:
+      show_legend: true
+      show_zero_lines: false
+      tight_layout: true
+      g-axis: false
+      offset: null
+    properties:
+      axes:
+        xlim: [2.007, 1.999]
+      grid:
+        show: true
+        axis: x
+    filename: x-q-comparison.pdf
+    caption:
+      title: > 
+        Comparison of the cw-EPR spectra of the same substance recorded at 
+        X and Q band.
+      text: > 
+        The splitting observed at Q band and not visible at X band 
+        can be attributed to g anisotropy. Furthermore, only conversion 
+        of the magnetic field axis to a g axis allows for directly 
+        comparing the spectra obtained at different fields and frequencies.
+  apply_to:
+  - Sample-Q-gaxis
+  - Sample-X-gaxis

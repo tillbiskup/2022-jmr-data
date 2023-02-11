@@ -1,0 +1,28 @@
+format:
+  type: ASpecD recipe
+  version: '0.2'
+settings:
+  default_package: cwepr
+  autosave_plots: false
+  write_history: true
+directories:
+  output: 
+  datasets_source: data-raw
+datasets:
+  - Sa767-03
+tasks:
+  - kind: processing
+    type: BaselineCorrection
+  - kind: singleplot
+    type: SinglePlotter2DStacked
+    properties:
+      properties:
+        axes:
+          xlim: [349, 354]
+      style: xkcd
+      parameters:
+        tight_layout: true
+      filename:
+      - xkcd-style.pdf
+    apply_to:
+    - Sa767-03
