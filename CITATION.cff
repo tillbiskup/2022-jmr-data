@@ -35,3 +35,7 @@ references:
     volume: 335
     pages: 107140
     year: 2022
+identifiers:
+  - description: "The concept DOI of the work."
+    type: doi
+    value: 10.5281/zenodo.7734916
