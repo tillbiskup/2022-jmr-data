@@ -1,5 +1,7 @@
 # EPR data and analysis for Schröder and Biskup, J. Magn. Reson. 335:107140, 2022
 
+[![DOI](https://zenodo.org/badge/614087739.svg)](https://zenodo.org/badge/latestdoi/614087739)
+
 This directory contains both, raw data and analysis "recipes" used to analyse the EPR data for the following publication:
 
  * Mirjam Schröder, Till Biskup. cwepr – a Python package for analysing cw-EPR data focussing on reproducibility and simple usage. *Journal of Magnetic Resonance* **335**:107140, 2022. doi:[10.1016/j.jmr.2021.107140](https://doi.org/10.1016/j.jmr.2021.107140)
