@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite both the article from the references section and the dataset itself."
+title: Data for Schröder et al., J. Magn. Reson. 335:107140, 2022
+abstract: >
+    This directory contains the example data for the following publication:
+
+    * Mirjam Schröder, Till Biskup: cwepr – a Python package for analysing cw-EPR data focussing on reproducibility and simple usage. Journal of Magnetic Resonance 335:107140, 2022. doi:10.1016/j.jmr.2021.107140
+authors:
+  - family-names: Schröder
+    given-names: Mirjam
+    orcid: "https://orcid.org/0000-0002-8940-3185"
+  - family-names: Biskup
+    given-names: Till
+    orcid: "https://orcid.org/0000-0003-2913-0004"
+type: dataset
+license: "CC-BY-4.0"
+repository-code: "https://github.com/tillbiskup/2022-jmr-data"
+keywords:
+  - "reproducible research"
+  - "electron paramagnetic resonance spectroscopy"
+  - "software"
+  - "data analysis"
+references:
+  - type: article
+    authors:
+    - family-names: Schröder
+      given-names: Mirjam
+      orcid: "https://orcid.org/0000-0002-8940-3185"
+    - family-names: Biskup
+      given-names: Till
+      orcid: "https://orcid.org/0000-0003-2913-0004"
+    title: "cwepr – a Python package for analysing cw-EPR data focussing on reproducibility and simple usage"
+    doi: 10.1016/j.jmr.2021.107140
+    journal: "Journal of Magnetic Resonance"
+    volume: 335
+    pages: 107140
+    year: 2022
